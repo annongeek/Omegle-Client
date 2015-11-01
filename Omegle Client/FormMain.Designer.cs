@@ -100,6 +100,7 @@
             this.button1.TabIndex = 13;
             this.button1.Text = "Send";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textOutPut
             // 
@@ -109,6 +110,8 @@
             this.textOutPut.Name = "textOutPut";
             this.textOutPut.Size = new System.Drawing.Size(399, 20);
             this.textOutPut.TabIndex = 12;
+            this.textOutPut.TextChanged += new System.EventHandler(this.textOutPut_TextChanged);
+            this.textOutPut.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textOutPut_KeyDown);
             // 
             // FormMain
             // 

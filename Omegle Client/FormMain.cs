@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Omegle_Client
 {
@@ -14,6 +15,7 @@ namespace Omegle_Client
         private float fontSize = 9;
         private string fontName = "Tahoma";
         public static OmegleLibrary _omegle;
+        public Thread typingWorker; //This is to handleing our typing in the textOutPut.
         public FormMain()
         {
             InitializeComponent();
@@ -46,6 +48,40 @@ namespace Omegle_Client
         private void reconnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _omegle.Reconnect();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _omegle.SendMessage(textOutPut.Text);
+            Chat("Self: ", Color.Blue, FontStyle.Bold, false);
+            Chat(textOutPut.Text, Color.Black, FontStyle.Regular, true);
+            textOutPut.Text = "";
+        }
+
+        void TypingHandle()
+        {
+            if (textOutPut.Text != "")
+            {
+                _omegle.StartTyping();
+            }
+            else
+            {
+                _omegle.StopTyping();
+            }
+        }
+
+        private void textOutPut_TextChanged(object sender, EventArgs e)
+        {
+            typingWorker = new Thread(new ThreadStart(TypingHandle));
+            typingWorker.Start();
+        }
+
+        private void textOutPut_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(this, new EventArgs());
+            }
         }
     }
 }
