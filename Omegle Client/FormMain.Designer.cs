@@ -1,6 +1,6 @@
 ﻿namespace Omegle_Client
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
