@@ -62,20 +62,23 @@
             // startSessionToolStripMenuItem1
             // 
             this.startSessionToolStripMenuItem1.Name = "startSessionToolStripMenuItem1";
-            this.startSessionToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
+            this.startSessionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.startSessionToolStripMenuItem1.Text = "Connect";
+            this.startSessionToolStripMenuItem1.Click += new System.EventHandler(this.startSessionToolStripMenuItem1_Click);
             // 
             // disconnectSessionToolStripMenuItem
             // 
             this.disconnectSessionToolStripMenuItem.Name = "disconnectSessionToolStripMenuItem";
-            this.disconnectSessionToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.disconnectSessionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.disconnectSessionToolStripMenuItem.Text = "Disconnect";
+            this.disconnectSessionToolStripMenuItem.Click += new System.EventHandler(this.disconnectSessionToolStripMenuItem_Click);
             // 
             // reconnectToolStripMenuItem
             // 
             this.reconnectToolStripMenuItem.Name = "reconnectToolStripMenuItem";
-            this.reconnectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.reconnectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reconnectToolStripMenuItem.Text = "Reconnect";
+            this.reconnectToolStripMenuItem.Click += new System.EventHandler(this.reconnectToolStripMenuItem_Click);
             // 
             // textChat
             // 
@@ -107,7 +110,7 @@
             this.textOutPut.Size = new System.Drawing.Size(399, 20);
             this.textOutPut.TabIndex = 12;
             // 
-            // Form1
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -116,7 +119,7 @@
             this.Controls.Add(this.textChat);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textOutPut);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Client";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

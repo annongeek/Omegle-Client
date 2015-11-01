@@ -32,5 +32,20 @@ namespace Omegle_Client
             textChat.Invoke(new MethodInvoker(() => textChat.SelectionStart = textChat.TextLength));
             textChat.Invoke(new MethodInvoker(() => textChat.ScrollToCaret()));
         }
+
+        private void startSessionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            _omegle.Connect();
+        }
+
+        private void disconnectSessionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _omegle.Disconnect();
+        }
+
+        private void reconnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _omegle.Reconnect();
+        }
     }
 }
