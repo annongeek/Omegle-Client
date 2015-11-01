@@ -83,5 +83,10 @@ namespace Omegle_Client
                 button1_Click(this, new EventArgs());
             }
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            _omegle = new OmegleLibrary(this, Color.Red);
+        }
     }
 }
