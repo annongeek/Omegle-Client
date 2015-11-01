@@ -14,8 +14,9 @@ namespace Omegle_Client
     {
         private float fontSize = 9;
         private string fontName = "Tahoma";
-        public static OmegleLibrary _omegle;
+        private OmegleLibrary _omegle;
         public Thread typingWorker; //This is to handleing our typing in the textOutPut.
+       
         public FormMain()
         {
             InitializeComponent();
@@ -52,28 +53,17 @@ namespace Omegle_Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _omegle.SendMessage(textOutPut.Text);
             Chat("Self: ", Color.Blue, FontStyle.Bold, false);
             Chat(textOutPut.Text, Color.Black, FontStyle.Regular, true);
-            textOutPut.Text = "";
-        }
-
-        void TypingHandle()
-        {
-            if (textOutPut.Text != "")
-            {
-                _omegle.StartTyping();
-            }
-            else
-            {
-                _omegle.StopTyping();
-            }
+            _omegle.SendMessage(textOutPut.Text);
         }
 
         private void textOutPut_TextChanged(object sender, EventArgs e)
         {
-            typingWorker = new Thread(new ThreadStart(TypingHandle));
-            typingWorker.Start();
+            if (textOutPut.Text == string.Empty)
+                _omegle.StopTyping();
+            else
+                _omegle.StartTyping();
         }
 
         private void textOutPut_KeyDown(object sender, KeyEventArgs e)
@@ -81,12 +71,14 @@ namespace Omegle_Client
             if (e.KeyCode == Keys.Enter)
             {
                 button1_Click(this, new EventArgs());
+                textOutPut.Invoke(new MethodInvoker(() => textOutPut.Text = ""));
             }
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             _omegle = new OmegleLibrary(this, Color.Red);
+
         }
     }
 }
